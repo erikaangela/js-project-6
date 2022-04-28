@@ -23,10 +23,10 @@ Requirements:
 
 <body>
   <div class="container-fluid p-sm-3">
-    <h3>Idiomatic Figures of Speech Quiz</h3>
+    <h2>Idiomatic Figures of Speech Quiz</h2>
     <p>Choose the best answer to fill in the blank in each phrase. When you finish, submit your answers.</p><br>
 
-    <form onsubmit="event.preventDefault();">
+    <form onsubmit="event.preventDefault(); results()">
       <div class="question-1">
         <p><b>Question 1.</b> <i>"Don't let the cat out of the ____."</i></p>
         <input type="radio" id="cage" name="question-1" value="cage">
@@ -36,7 +36,9 @@ Requirements:
         <input type="radio" id="box" name="question-1" value="box">
         <label for="box">box</label><br>
         <input type="radio" id="house" name="question-1" value="house">
-        <label for="house">house</label>
+        <label for="house">house</label><br>
+
+        <p id="resultsOne"></p>
       </div><br>
 
       <div class="question-2">
@@ -48,7 +50,9 @@ Requirements:
         <input type="radio" id="stone" name="question-2" value="stone">
         <label for="stone">stone</label><br>
         <input type="radio" id="feather" name="question-2" value="feather">
-        <label for="feather">feather</label>
+        <label for="feather">feather</label><br>
+
+        <p id="resultsTwo"></p>
       </div><br>
 
       <div class="question-2">
@@ -60,7 +64,9 @@ Requirements:
         <input type="radio" id="avenue" name="question-3" value="avenue">
         <label for="avenue">avenue</label><br>
         <input type="radio" id="street" name="question-3" value="street">
-        <label for="street">street</label>
+        <label for="street">street</label><br>
+
+        <p id="resultsThree"></p>
       </div><br>
 
       <div class="submit">
@@ -70,6 +76,39 @@ Requirements:
   </div>
 
   <script>
+    function results() {
+      const answerOne = document.getElementById("bag").value;
+      const answerTwo = document.getElementById("stone").value;
+      const answerThree = document.getElementById("bridge").value;
+      let userOne = document.querySelector('input[name="question-1"]:checked').value;
+      let userTwo = document.querySelector('input[name="question-2"]:checked').value;
+      let userThree = document.querySelector('input[name="question-3"]:checked').value;
+      const resultsOne = document.getElementById("resultsOne");
+      const resultsTwo = document.getElementById("resultsTwo");
+      const resultsThree = document.getElementById("resultsThree");
+
+      if (userOne === answerOne) {
+        resultsOne.innerText = `Correct!`;
+        resultsOne.style.color = "green";
+      } else {
+        resultsOne.innerText = `Incorrect. The answer was \"${answerOne}.\"`
+        resultsOne.style.color = "red";
+      }
+      if (userTwo === answerTwo) {
+        resultsTwo.innerText = `Correct!`;
+        resultsTwo.style.color = "green";
+      } else {
+        resultsTwo.innerText = `Incorrect. The answer was \"${answerTwo}.\"`
+        resultsTwo.style.color = "red";
+      }
+      if (userThree === answerThree) {
+        resultsThree.innerText = `Correct!`;
+        resultsThree.style.color = "green";
+      } else {
+        resultsThree.innerText = `Incorrect. The answer was \"${answerThree}.\"`
+        resultsThree.style.color = "red";
+      }
+    }
   </script>
 
 </body>
